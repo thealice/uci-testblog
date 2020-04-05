@@ -5,6 +5,9 @@ Post
     - has_many :comments
     - has_many :users, through: :comments
     - belongs_to :category
+    OR 
+    - has_many :post_categories
+    - has_many :categories, through: :post_categories
 
 
     attributes:
@@ -31,11 +34,16 @@ Comment
         - content
 
 Category
-    - has_many :posts
     - has_many :users, through: :posts
+    - has_many :posts
+    OR??
+    - has_many :post_categories??
+    - has_many :posts, through: :post_categories??
     
     attributes:
         - name
 
-
-
+This would allow a post to have multiple categories
+PostCategories
+    belongs_to :post
+    belongs_to :category
