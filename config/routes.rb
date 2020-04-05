@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  resources :categories
-  resources :comments
-  resources :users
+  
+  get '/signup' => 'users#new'
+  root 'posts#index'
+
+  resources :categories, only: [:index, :show]
+  # resources :comments
+  resources :users, except: [:delete]
   resources :posts
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
