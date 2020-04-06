@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-  
+  root 'posts#index'
+
   get '/signup' => 'users#new'
   post '/signup'=> 'users#create'
-  
-  root 'posts#index'
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+
+  delete '/logout' => 'sessions#destroy'
+
 
   resources :categories, only: [:index, :show]
   # resources :comments
